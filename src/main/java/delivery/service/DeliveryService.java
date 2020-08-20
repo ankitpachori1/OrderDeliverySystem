@@ -61,13 +61,13 @@ public class DeliveryService {
                 .collect(Collectors.toList());
     }
 
-    public Boolean getDeLiveryPersonStatus(String id) throws Exception{
+    public DeliveryPersonStatus getDeLiveryPersonStatus(String id){
         if(deliveryPersonList.containsKey(id)){
-            return deliveryPersonList.get(id).getIsAvailable();
+            if(deliveryPersonList.get(id).getIsAvailable())
+                return DeliveryPersonStatus.AVAILABLE;
+            else return DeliveryPersonStatus.BUSY;
         }
-        else {
-            throw new Exception("Delivery person not found");
-        }
+        else return DeliveryPersonStatus.NOT_FOUND;
     }
 
     public DeliveryResponse updateDeliveryStatus(DeliveryRequest request){

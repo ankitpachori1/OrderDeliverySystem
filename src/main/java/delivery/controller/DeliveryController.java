@@ -24,8 +24,7 @@ public class DeliveryController {
     }
 
     @GetMapping("/driver/{id}")
-    public @ResponseBody Boolean getDeliveryPersonStatus(
-            @PathVariable("id") String id) throws Exception{
+    public @ResponseBody DeliveryPersonStatus getDeliveryPersonStatus(@PathVariable("id") String id){
         return deliveryService.getDeLiveryPersonStatus(id);
     }
 
